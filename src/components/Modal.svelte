@@ -17,7 +17,7 @@
     <div class="foreground">
       <div class="button-container">
         <h3>{title}</h3>
-        <button on:click={close}>Close</button>
+        <button class="close-button" on:click={close}>Close</button>
       </div>
       <slot />
     </div>
@@ -39,7 +39,7 @@
     height: 100vh;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.3);
-    z-index: 100;
+    z-index: 300;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,11 +52,11 @@
     height: 100vh;
     position: fixed;
     align-items: center;
-    z-index: 102;
+    z-index: 302;
   }
 
   .foreground {
-    z-index: 103;
+    z-index: 303;
 
     padding: 20px 25px;
     background-color: white;
@@ -66,6 +66,9 @@
   .button-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-top: -15px;
   }
 
   .block-pointer {
@@ -76,11 +79,24 @@
     height: 100vh;
     position: fixed;
     align-items: center;
-    z-index: 101;
+    z-index: 301;
   }
 
   :global(.no-scroll) {
     height: 100%;
     overflow-y: hidden;
+  }
+
+  .close-button {
+    background-color: var(--helper-red, red);
+    color: var(--text-light, white);
+  }
+
+  .close-button:hover {
+    background-color: var(--helper-red-lighter);
+  }
+
+  .close-button:active {
+    background-color: var(--helper-red-darker);
   }
 </style>

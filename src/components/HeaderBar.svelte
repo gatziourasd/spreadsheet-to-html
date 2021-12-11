@@ -1,32 +1,15 @@
 <script>
-  import Modal from "./Modal.svelte";
+  import EditTemplateModal from "./EditTemplateModal.svelte";
   let modalElement;
 </script>
 
-<Modal title="Template (handlebars.js" bind:this={modalElement}>
-<pre class="content">
-    {`<div>
-        {{#each people as |person|}}
-          <div style="font-size: 14px; font-family: 'DaxPro-Regular', 'Segoe UI Semilight';">
-            <span style="color: #7F7F7F">{{person.title}}</span>
-            <a
-              style="color: #111111;"
-              href="mailto:{{person.email}}"
-            >{{person.name}}</a>
-            {{#if tel}}
-              <span style="color: #7F7F7F">, Tel.</span>
-              <span style="color: #111111;">{{person.tel}}</span>
-            {{/if}}
-          </div>
-        {{/each}}
-      </div>`}
-</pre>
-<div class="button-container">
-    <button>Save</button>
-</div>
-</Modal>
+<EditTemplateModal bind:this={modalElement} />
+
 <div class="container">
-  <div class="logo"><img src="/favicon.svg" alt="logo"></div>
+  <div class="logo-group">
+    <img class="logo" src="/favicon.svg" alt="logo" />
+    <h1>Spreadsheet to HTML</h1>
+  </div>
   <button
     on:click={() => {
       modalElement.open();
@@ -39,8 +22,33 @@
 
 <style>
   .container {
-    padding: 15px 10px;
+    padding: 8px 15px;
     display: flex;
     justify-content: space-between;
+
+    background-color: var(--element-foreground, white);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .logo-group {
+    display: flex;
+    align-items: center;
+  }
+
+  h1 {
+    margin: 0;
+    padding: 0;
+
+    font-size: 18px;
+    font-weight: 600;
+
+    margin-left: 20px;
+
+    color: var(--text-dark, black);
+  }
+
+  .logo {
+    height: 32px;
+    width: 32px;
   }
 </style>

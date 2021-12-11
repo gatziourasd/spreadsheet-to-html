@@ -1,7 +1,7 @@
 <script>
   export let splitPercentage = 50;
 
-  const dividerWidth = 10;
+  const dividerWidth = 3;
   let rWidth = splitPercentage;
 
   let mousedown = false;
@@ -22,7 +22,7 @@
 
 <div class="container">
   <div
-    class="pane selector"
+    class="active pane selector"
     class:selector={mousedown}
     style="flex-basis: {rWidth}%; width: {rWidth}%; flex-grow: 0; flex-shrink: 0;"
   >
@@ -30,7 +30,7 @@
   </div>
   <div
     class="divider"
-    style="width: {dividerWidth}px; min-width: {dividerWidth}px"
+    style="width:{dividerWidth}px; min-width: {dividerWidth}px;"
     on:mousedown={() => {
       mousedown = true;
     }}
@@ -49,9 +49,14 @@
   }
 
   .divider {
-    height: 100%;
-    background-color: black;
+    background-color: var(--element-foreground-darker, black);
     cursor: col-resize;
+  }
+
+  .divider:hover {
+    background-color: var(--accent-primary, blue);
+    transform: scaleX(4);
+    z-index: 310;
   }
 
   .selector {
